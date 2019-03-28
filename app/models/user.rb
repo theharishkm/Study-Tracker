@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 	has_many :subjects
-    def self.find_or_create_from_auth_hash(auth)
+    def self.from_omniauth(auth)
 		where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
 			user.provider = auth.provider
 			user.uid = auth.uid

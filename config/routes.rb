@@ -8,8 +8,15 @@ Rails.application.routes.draw do
   post '/signin',   to: 'sessions#create'
   get 'login', to: redirect('/auth/google_oauth2'), as: 'login'
   get '/logout', to: 'sessions#destroy', as: 'logout'
-  get 'auth/:provider/callback', to: 'sessions#create'
+  get  'auth/:provider/callback' => 'sessions#create'
+  get 'signout', to: 'sessions#destroy', as: 'signout'
+#  get  'auth/google_oauth2', :as => 'login'
   get 'auth/failure', to: redirect('/')
   post 'setup/create', to: 'setup#create'
   post 'dashboard/update', to: 'dashboard#update'
+  get 'me', to: 'me#show', as: 'me'
+  
+  resources :sessions, only: [:create, :destroy]
+#  resource :home, only: [:show]
+
 end
