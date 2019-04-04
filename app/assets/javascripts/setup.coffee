@@ -109,6 +109,12 @@ validateHoursAllocated = (hours) ->
   totalHours = 0
   true  
   
+validateDateSchedule = (check,start,end) ->
+  if (Date.parse(check) >= Date.parse(start) and Date.parse(check) <= Date.parse(end))
+    return true
+  errorList.push "Date of Schedule not between Start and End Date of Study Plan."
+  return false
+  
 parseAndValidate = ->
   formObj = parseForm()
   ###
@@ -170,7 +176,102 @@ parseAndValidate = ->
 
     #alert 'Totally unproductive error message'
 
+parseAndValidate2 = ->
+  formObj = parseForm()
+  ###
+  formObj = {
+      subjects : [{
+        end_date: "2018-11-02",
+        hours: "1",
+        name: "Physics"
+        schedules: [{
+            day: "mon",
+            start: "11:11",
+            end: "12:35"
+          },{
+            day: "tue",
+            start: "23:12",
+            end: " 23:35"
+          }]
+        },{
+        end_date: "2018-11-03",
+        hours: "1",
+        name: "Chemsitry"
+        schedules: [{
+            day: "wed",
+            start: "1:11",
+            end: "13:35"
+          },{
+            day: "thur",
+            start: "4:12",
+            end: " 5:35"
+          },{
+            day: "fri",
+            start: "2:12",
+            end: " 3:35"
+          }]
+        }]
+    }
+  ###
+  errorList = []
+  errorText = ''
+  $('#error1').remove()
+  if validate2(formObj)
+    #send to controller
+    $.ajax
+      type: 'POST'
+      url: '../setup/create'
+      data: formObj
+      dataType: 'text'
+      success: (resultData) ->
+        window.location.replace("../dashboard/index");
+    return
+  else
+    error = 0
+    errorText = '<li id="error1">' 
+    while error < errorList.length
+      errorText += '<span> '+ errorList[error] + '</span>'
+      error++
+    errorText+= '</li>'
+    $('#error').after(errorText)
 
+    #alert 'Totally unproductive error message'
+
+validate2 = (formObj) ->
+  json_s = JSON.stringify(formObj)
+  json = JSON.parse(json_s)
+  i = 0                                       # to iterate subjects
+  while i < json.subjects.length
+
+    subject = json.subjects[i].name
+    if(!validateSubjectName(subject))
+      return false
+    
+    hours = json.subjects[i].hours
+    if(!validateHours(hours))
+      return false
+      
+    startDate = json.subjects[i].start_date
+    endDate = json.subjects[i].end_date
+    if(!validateEndDate(endDate, startDate))
+      return false
+  
+    schedules = json.subjects[i].schedules
+    j = 0                                     # to iterate schedules
+    diff = 0                                  # will collect total hours
+    while j < schedules.length
+      # total time should be equal to 'hours' alloted
+      totalHoursAllocated(schedules[j].end, schedules[j].start)
+      if(!validateDateSchedule(schedules[j].dates, startDate,endDate))
+        return false
+      j++
+      
+    if(!validateHoursAllocated(hours))
+      return false
+      
+    i++
+    
+  return true 
 
 validate = (formObj) ->
   json_s = JSON.stringify(formObj)
@@ -200,8 +301,10 @@ validate = (formObj) ->
     while j < schedules.length
       # total time should be equal to 'hours' alloted
       totalHoursAllocated(schedules[j].end, schedules[j].start)
+      if(!validateDateSchedule(schedules[j].dates, startDate,endDate))
+        return false
       j++
-    
+      
     if(!validateHoursAllocated(hours))
       return false
       
@@ -230,6 +333,7 @@ parseForm = ->
       temp_sched['day'] = schedule.find('select[id="day"]').val()
       temp_sched['start'] = schedule.find('input[id="starttime"]').val()
       temp_sched['end'] = schedule.find('input[id="endtime"]').val()
+      temp_sched['dates'] = schedule.find('input[id="dates"]').val()
       temp_subj['schedules'].push(temp_sched)
       j++
     formObj['subjects'].push(temp_subj)
@@ -251,7 +355,9 @@ $(document).ready ->
    $('.btn-del-subject').on 'click', deletesubject   
  $ ->
    $('.btn-submit').on 'click', parseAndValidate
-
    return
+ $ ->
+   $('.btn-edit').on 'click', parseAndValidate2
+   return   
  return
 return

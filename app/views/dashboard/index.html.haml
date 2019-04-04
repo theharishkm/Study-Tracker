@@ -8,10 +8,12 @@
     .mdl-layout__header-row
       %span.mdl-layout-title Home
       .mdl-layout-spacer
+      = link_to image_tag( '/assets/ASC_logo.png', width: '125', height: '75'), 'https://successcenter.tamu.edu/'
+    
   .demo-drawer.mdl-layout__drawer.mdl-color--blue-grey-900.mdl-color-text--blue-grey-50
     %header.demo-drawer-header
       %img.demo-avatar{:src => "https://www.clipartmax.com/png/small/15-153139_big-image-login-icon-with-transparent-background.png"}/
-      .demo-avatar-dropdown
+      .name
         %span= @current_user.first_name + " " + @current_user.last_name
         .mdl-layout-spacer
     %nav.demo-navigation.mdl-navigation.mdl-color--blue-grey-800
@@ -24,9 +26,9 @@
       %a.mdl-navigation__link{:href => "/setup/index"}
         %i.mdl-color-text--blue-grey-400.material-icons{:role => "presentation"}> settings
         Setup
-      %a.mdl-navigation__link{:href => "https://successcenter.tamu.edu/"}
-        %i.mdl-color-text--blue-grey-400.material-icons{:role => "presentation"}> info
-        About
+      -#%a.mdl-navigation__link{:href => "https://successcenter.tamu.edu/"}
+        -#%i.mdl-color-text--blue-grey-400.material-icons{:role => "presentation"}> info
+        -#About
       
       %a.mdl-navigation__link{:href => logout_path}
         %i.mdl-color-text--blue-grey-400.material-icons{:role => "presentation"}> power_settings_new

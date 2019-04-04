@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :events
   get 'setup/index'
+  get 'setup/edit'
   root 'dashboard#index'
   get 'calendar/index', to: 'calendar#index'
   get 'dashboard/index'

@@ -13,6 +13,7 @@ class DashboardController < ApplicationController
       schedules = subject.schedules
       out_subject['schedules'] = []
       out_subject['upcoming_schedules'] = []
+      out_subject['schedules_missed'] = []
       schedules.each do |schedule|
         schedule_nc = Hash.new
         schedule_nc['id'] = schedule.id
@@ -20,8 +21,13 @@ class DashboardController < ApplicationController
         schedule_nc['completed'] = schedule.completed
         schedule_nc['start_time'] = schedule.start_time.time.strftime("%I:%M%p")
         schedule_nc['end_time'] = schedule.end_time.time.strftime("%I:%M%p")
+        schedule_nc['dates'] = schedule.dates
+        if DatePassed schedule_nc['dates'] and !schedule.completed
+          out_subject["schedules_missed"].push(schedule_nc)
+          next
+        end
         out_subject['schedules'].push(schedule_nc)
-        if compareDays(day_to_string(schedule.day_of_week), Date.today.strftime("%A")) and !schedule.completed
+        if !schedule.completed
           out_subject["upcoming_schedules"].push(schedule_nc)
         end
       end
@@ -62,4 +68,12 @@ class DashboardController < ApplicationController
     end
     return false
   end
+  
+  def DatePassed(day)
+    if (day < Date.today)
+      return true
+    end  
+    return false
+  end
+  
 end

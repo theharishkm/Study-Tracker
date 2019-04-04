@@ -1,35 +1,26 @@
--setup_prefill = defined?subject
 #subjectform
     .mdl-grid
         .mdl-cell.mdl-cell--6-col
-            %label{:for => "subject"} Enter Subject Name
+            %label{:for => "subject"} Enter Subject Name/Project Title
             %span{:style => "color: red"}*
-            %input#subject.form-control.mdl-textfield__input{:type => "text",:name=>"name", :value => if setup_prefill then subject.name end}
+            %input#subject.form-control.mdl-textfield__input{:type => "text",:name=>"name"}
         .mdl-cell.mdl-cell--6-col
             %label{:for => "hours"} Enter Hours Planned
             %span{:style => "color: red"}*
-            %input#hours.form-control.mdl-textfield__input{:type => "number",:name=>"hours", :value => if setup_prefill then subject.hours end}/
+            %input#hours.form-control.mdl-textfield__input{:type => "number",:name=>"hours"}/
     .mdl-grid
         .mdl-cell.mdl-cell--6-col
             %label{:for => "startdate"} Enter Start Date
             %span{:style => "color: red"}*
-            %input#startdate{:type => "date", :required => "",:name=>"start_date", :value => if setup_prefill then subject.start_date end}/
+            %input#startdate{:type => "date", :required => "",:name=>"start_date"}/
         .mdl-cell.mdl-cell--6-col
             %label{:for => "enddate"} Enter End Date
             %span{:style => "color: red"}*
-            %input#enddate{:type => "date", :required => "",:name=>"end_date", :value => if setup_prefill then subject.end_date end}/
+            %input#enddate{:type => "date", :required => "",:name=>"end_date"}/
     .schedule-list.add
         #single-schedule-0.div1.mdl-grid
             =render "setup/partials/schedule_form"
-        -if setup_prefill
-            -i = scheduleid
-            - subject.schedules.each do |schedule|
-                -i = i + 1
-                .div1.mdl-grid{:id => "single-schedule-" + i.to_s}
-                    =render partial: "setup/partials/schedule_form", locals: {schedule: schedule}
-        -else
-            #single-schedule-1.div1.mdl-grid
-                =render "setup/partials/schedule_form"
+            
     .mdl-grid
         %button.btn-delete.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-cell.mdl-cell--5-col.mdl-button--colored{:type => "button"} Delete Schedule
         %button.btn-copy.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-cell.mdl-cell--5-col.mdl-cell--2-offset.mdl-button--colored{:type => "button"} Add Schedule

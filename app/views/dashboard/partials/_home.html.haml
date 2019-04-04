@@ -1,4 +1,9 @@
 %main.mdl-layout__content.mdl-color--grey-100
+  .center
+    General Instructions:
+    %img{:src => "/assets/arrow.jpg", width: '30', height: '30'} For setting up Study Plans, go to Setup
+    %img{:src => "/assets/arrow.jpg", width: '30', height: '30'} If you have Study Plans set up, to Update or Edit them, click on Update
+    
   .mdl-grid.demo-content
     -id = 0
     - @out_subjects.each do |subject|
@@ -24,9 +29,22 @@
   
             .right-list-container{:id => 'right-graph-'+subject_id, :height => "50%"}
               %section
+                %h5 Missed Schedules
+                -if subject["schedules_missed"].length != 0
+                  %ul.mdl-list{:id => 'right-list-'+subject_id}
+                    -i = 0
+                    -schedules = subject["schedules_missed"]
+                    -schedules.each do |schedule|
+                      -i = i+1
+                      -schedule_id = subject_id + '-' + i.to_s
+                      %li.mdl-list__item{:id => 'list-item-'+ schedule_id}
+                        %span.mdl-list__item-primary-content{:id => 'list-primary-content-'+ schedule_id}
+                          %i.material-icons.mdl-list__item-icon access_time
+                          = schedule["dates"].to_s + ", " + schedule["day"]+", "+schedule["start_time"] + " to " + schedule["end_time"]
+               
                 %h5 Upcoming Schedules
                 %ul.mdl-list{:id => 'right-list-'+subject_id}
-                -if subject["upcoming_schedules"].length == 0
+                -if subject["upcoming_schedules"].length == 0 and subject["schedules_missed"].length == 0
                   %li.mdl-list__item
                     %i All caught up!
                 -else
@@ -38,7 +56,7 @@
                     %li.mdl-list__item{:id => 'list-item-'+ schedule_id}
                       %span.mdl-list__item-primary-content{:id => 'list-primary-content-'+ schedule_id}
                         %i.material-icons.mdl-list__item-icon access_time
-                        = schedule["day"] + ", " + schedule["start_time"] + " to " + schedule["end_time"]
+                        = schedule["dates"].to_s + ", " + schedule["day"]+", "+schedule["start_time"] + " to " + schedule["end_time"]
             .mdl-grid.update-btn-container
               .mdl-cell.mdl-cell--4-col
                 %button.btn-update.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-cell--10-col.mdl-button--colored{:id=>"update" + subject_id, :type => "button"} Update

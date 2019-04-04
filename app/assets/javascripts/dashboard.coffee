@@ -70,6 +70,7 @@ setWeeklyCompletion = ->
         $("#left-chart-label-" + (i+1)).html(weeklyCompletion + "%")
         $("#left-donut-segment-" + (i+1)).css("stroke-dasharray", weeklyCompletion + " " + (100-weeklyCompletion))
         i++
+    
 
 $(document).ready ->
  subjects = ($('#trackers').data('trackers'))

@@ -36,7 +36,7 @@ class SetupController < ApplicationController
   def isComplete(sch, subject_name, completed_schedules)
     completed_schedules.each do |schedule|
       if schedule["subject_name"]== subject_name and schedule["day_of_week"] == sch.day_of_week and
-        schedule["start_time"] == sch.start_time.strftime("%H:%M:%S") and schedule["end_time"] == sch.end_time.strftime("%H:%M:%S")
+        schedule["start_time"] == sch.start_time.strftime("%H:%M:%S") and schedule["end_time"] == sch.end_time.strftime("%H:%M:%S") and schedule["dates"] == sch.dates
         return true
       end
     end
@@ -66,6 +66,7 @@ class SetupController < ApplicationController
         sch.day_of_week = day_to_int(v[:day])
         sch.start_time = v[:start]
         sch.end_time = v[:end]
+        sch.dates = v[:dates]
         if isComplete(sch, subject.name, completed_schedules)
           sch.completed = true
         else
@@ -79,8 +80,13 @@ class SetupController < ApplicationController
     
     
     if @current_user.save!
-      flash[:success] = "Successfully saved!"
       redirect_to dashboard_index_path
     end
   end
+  
+  def edit
+    @current_user ||= User.find_by_id(session[:user_id])
+    @subjects = @current_user.subjects
+  end
+  
 end
