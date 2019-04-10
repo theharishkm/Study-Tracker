@@ -34,7 +34,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.1.0', require: false
+# gem 'bootsnap', '>= 1.1.0', require: false
 gem 'haml'
 gem 'haml-rails'
 gem 'omniauth-google-oauth2'
