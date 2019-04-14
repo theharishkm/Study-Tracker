@@ -2,9 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .login-container{
-    padding-top:10%;
+    padding-top:15%;
     text-align:center;
     display: block;
+    box-sizing: border-box;
 }
 
 .notice{
@@ -48,8 +49,15 @@ body {
 .nav-wrapper{
    background:  #721212;
    width: 100%;
+   padding-left: 28%;
 }
 
 #centered{
    padding: 20px 0px;
+}
+
+.vertical-center {
+  min-height: 40%;  /* Fallback for browsers do NOT support vh unit */
+  display: flex;
+  align-items: center;
 }

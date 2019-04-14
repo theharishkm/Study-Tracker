@@ -1,5 +1,7 @@
 {
   "name": "Study-Tracker",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "animate.css": "^3.7.0"
+  }
 }

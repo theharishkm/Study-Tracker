@@ -103,7 +103,7 @@ totalHoursAllocated = (end, start) ->
   
 validateHoursAllocated = (hours) ->
   if totalHours != parseInt(hours)
-    errorList.push "Total hours are not consistent."
+    errorList.push "The total hours don't add up to the number of hours you planned."
     totalHours = 0
     return false
   totalHours = 0

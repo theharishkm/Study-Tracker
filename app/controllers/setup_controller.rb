@@ -4,7 +4,11 @@ class SetupController < ApplicationController
   
   def index
     @current_user ||= User.find_by_id(session[:user_id])
-    @subjects = @current_user.subjects
+   # @subjects = @current_user.subjects
+  end
+  
+  def new
+    
   end
   
   def day_to_int(day_of_week)
@@ -52,8 +56,6 @@ class SetupController < ApplicationController
       subject_id = schedule["subject_id"]
       schedule["subject_name"] = Subject.find_by_id(subject_id)["name"]
     end
-    Schedule.where(subject_id: @current_user.subjects.ids).destroy_all()
-    Subject.where(user_id: @current_user.id).destroy_all()
     subjects.each do |key,value|
       subject = Subject.new
       subject.name = value[:name] 
@@ -75,9 +77,7 @@ class SetupController < ApplicationController
         subject.schedules << sch
       end
       @current_user.subjects << subject
-    end  
-    #@current_user.update_attributes(:phone_no => params[:phone_no])
-    
+    end 
     
     if @current_user.save!
       redirect_to dashboard_index_path
@@ -85,8 +85,7 @@ class SetupController < ApplicationController
   end
   
   def edit
-    @current_user ||= User.find_by_id(session[:user_id])
-    @subjects = @current_user.subjects
+    
   end
   
 end
