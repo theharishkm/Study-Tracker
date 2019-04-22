@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     if (user.email.match(/tamu.edu/))
       redirect_to root_path
     else
-      flash[:warning] = "Login with your TAMU EMAIL ID Only. Log out from all Google Accounts and try again."
+      flash[:warning] = "Login with your TAMU Net ID Only. Log out from all Google Accounts and try again."
       redirect_to signin_path
     end
   end

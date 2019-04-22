@@ -18,6 +18,8 @@ form {
 
 .username{
 	padding-bottom:10px;
+	font-size: 25px;
+	
 }
 
 .btn-copy{
@@ -86,3 +88,20 @@ form {
 		}
 	}
 }
+
+.center{
+  text-align: left;
+  padding-left: 10px;
+  padding-top: 10px;
+  #font-weight: bold;
+  font-size: 15px;
+  color: #005668;
+  white-space: pre-line;
+}
+
+.heading{
+	text-decoration: underline;
+	font-weight: bold;
+  	font-size: 15px;
+}
+

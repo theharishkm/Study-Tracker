@@ -8,38 +8,15 @@
   %form{:action => setup_create_path, :method => :post, :novalidate => "", :id => 'setup_form'}
     .container
       %h5.username
-        Name:
+        Name
         %span=  @current_user.first_name + " " + @current_user.last_name
-      -#.mdl-grid
-        -#.mdl-cell.mdl-cell--6-col
-          -#%label{:for => "year"} Select Year of Study
-          -#%span{:style => "color: red"}*
-          -#%select#year.select-year.form-control.form-control-lg{:name => "year"}
-            -#%option{:value => "Freshman", :selected => @current_user.year == "Freshman"} Freshman
-            -#%option{:value => "Sophomore", :selected => @current_user.year == "Sophomore"} Sophomore
-            -#%option{:value => "Junior", :selected => @current_user.year == "Junior"} Junior
-            -#%option{:value => "Senior", :selected => @current_user.year == "Senior"} Senior
-            -#%option{:value => "Graduate", :selected => @current_user.year == "Graduate"} Graduate
-        -#.mdl-cell.mdl-cell--6-col
-          -#%label{:for => "phone"} Enter Phone Number 
-          -#%input#phone.form-control.mdl-textfield__input{:pattern => "^\s*[0-9]{10}$", :type => "text",:name=> "phone_no", :value=> @current_user.phone_no}/
-          -#%span.mdl-textfield__error Input is not a number!
-        
-      %h5 Enter Study Plan:
     
       #subject-list
-        #single-subject-0
-          =render "setup/partials/edit_subject_form"
-        -i = 0
-        - if @current_user.subjects.length == 0
-          #single-subject-1
-            =render "setup/partials/edit_subject_form", id: "first_subject"
-        - else
-          - @current_user.subjects.each do |subject|
-            -i = i + 1
-            %div{:id => "single-subject-" + i.to_s}
-              -print(subject.name)
-              =render partial: "setup/partials/edit_subject_form", locals: {subject: subject, scheduleid: i*subject.schedules.length}
+      -i = 0
+      - @current_user.subjects.each do |subject|
+        -i = i + 1
+        %div{:id => "single-subject-" + i.to_s}
+          =render partial: "setup/partials/edit_subject_form", locals: {subject: subject, scheduleid: i*subject.schedules.length}
       
       .mdl-grid.add-subject
         %button.btn-subject.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-cell.mdl-cell--5-col.mdl-button--colored{:type => "button"} Add Subject

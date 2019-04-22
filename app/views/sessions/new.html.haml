@@ -9,41 +9,33 @@
 %header
     %nav.row 
         %div.nav-wrapper
-            .col.s3.left-align
-                %img{:alt => "Logo", :src => "assets/ASC_logo.png", :width => "250px", :height => "60px"}/ 
             .col.s5.center-align 
                 %span.brand-logo StudyTracker
-            .col.s4.right-align    
-                %ul#centered.right.hide-on-med-and-down
-                    // %li
-                    //     %a{:href => "#"} Sass
-                    // %li
-                    //     %a{:href => "#"} Components
-                    %li
-                        %a{:href => "https://successcenter.tamu.edu/"} About Us
 
 %main.gray.lighten-4
     .notice
         -# if flash[:warning]
         =flash[:warning]
 
-    .login-container.mdl-grid
-        .btn.white.darken-8.col-xs-6.s10.m4.login-button
-            %a.login-link{:href => "/auth/google_oauth2", :style => "text-transform:none"}
-                .left
-                    %img{:src => "assets/tamu-logo.png", :width => "70px", :height => "40px"}/
-                Login with TAMU Email ID
-
-
-
+    .vertical-center
+        .login-container.mdl-grid
+            .btn.white.darken-8.col-xs-10.s10.m4.login-button
+                %a.login-link{:href => "/auth/google_oauth2", :style => "text-transform:none"}
+                    .left
+                        %img{:src => "assets/tamu-logo.png", :width => "70px", :height => "40px"}/
+                    Login with TAMU Net ID
+    
+    
+    
 %footer.page-footer#site-footer
+    =link_to image_tag( "/assets/ASC_Other_Logo.png", :width => "350px", :height => "60px", :class => "img-responsive center-block"), 'https://successcenter.tamu.edu/' 
     %div.container
         %p.center
-            %img{:src => "images/find your success_main_RGB copy.png", :width => "200", :height => "65"}
+            /%img{:src => "images/find your success_main_RGB copy.png", :width => "175", :height => "65"}
             
         %p.center    
             %span
-                Academic Success Center
+                /Academic Success Center
 
 
 // <a title="By Texas A&amp;M University [Public domain], via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Texas_A%26M_University_logo.svg"><img width="128" alt="Texas A&amp;M University logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Texas_A%26M_University_logo.svg/128px-Texas_A%26M_University_logo.svg.png"></a>

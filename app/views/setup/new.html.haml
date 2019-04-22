@@ -1,0 +1,39 @@
+= javascript_include_tag params[:controller]
+= stylesheet_link_tag params[:controller]
+%header.mdl-layout__header
+  %h4.setup-header Create New Study Plan
+ 
+.container
+  %ul#error
+  %form{:action => setup_create_path, :method => :post, :novalidate => "", :id => 'setup_form'}
+    .center
+      .heading Instructions for filling out the form:
+      %img{:src => "/assets/arrow.jpg", width: '30', height: '30'} Under Subject Name/Project Title enter the Subject or Project Title
+      %img{:src => "/assets/arrow.jpg", width: '30', height: '30'} Under Hours Planned enter the Number of Hours you plan to study for the particular subject
+      %img{:src => "/assets/arrow.jpg", width: '30', height: '30'} Then enter the start date and end date for the particular plan.
+      %img{:src => "/assets/arrow.jpg", width: '30', height: '30'} Then click on Add Schedule to divide the divide the weekly plan into days
+      %img{:src => "/assets/arrow.jpg", width: '30', height: '30'} Then enter the day, date and start and end times of the Schedule
+      %img{:src => "/assets/arrow.jpg", width: '30', height: '30'} For more Schedules, click on Add Schedule
+      %img{:src => "/assets/arrow.jpg", width: '30', height: '30'} To Enter more plans, click on Add Subject. You can always add more Study Plans later as well.
+      %img{:src => "/assets/arrow.jpg", width: '30', height: '30'} To view the Plan in Home Page, click on the Arrow at bottom
+      
+    .container
+      %h5.username
+        Name:
+        %span=  @current_user.first_name + " " + @current_user.last_name
+      #subject-list
+        #single-subject-0
+          =render "setup/partials/subject_form"
+        #single-subject-1
+          =render "setup/partials/subject_form", id: "first_subject"
+      
+      .mdl-grid.add-subject
+        %button.btn-subject.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-cell.mdl-cell--5-col.mdl-button--colored{:type => "button"} Add Subject
+        %button.btn-del-subject.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-cell.mdl-cell--5-col.mdl-button--colored{:type => "button"} Delete Subject
+        
+      // .mdl-grid    
+      //   %button.btn-subject.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.col-5.mdl-button--colored{:type => "button"} Add Subject
+      //   %button.btn-del-subject.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.col-5.offset-2.mdl-button--colored{:type => "button"} Delete Subject
+      
+      %button#button_submit.btn-submit.mdl-button.mdl-js-button.mdl-button--fab.mdl-js-ripple-effect.mdl-button--colored{:type => "button"}
+        %i.material-icons arrow_forward

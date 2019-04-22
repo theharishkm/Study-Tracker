@@ -4,7 +4,7 @@ class DashboardController < ApplicationController
   
   def index
     @current_user ||= User.find_by_id(session[:user_id])
-    subjects = @current_user.subjects
+    subjects = @current_user.subjects.all
     @out_subjects = []
     subjects.each do |subject|
       out_subject = Hash.new
@@ -70,7 +70,7 @@ class DashboardController < ApplicationController
   end
   
   def DatePassed(day)
-    if (day < Date.today)
+    if (day < Date.current)
       return true
     end  
     return false
