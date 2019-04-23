@@ -1,0 +1,43 @@
+@import url(https://fonts.googleapis.com/css?family=Sigmar+One);
+
+/*.congrats {*/
+/*	position: absolute;*/
+/*	top: 100%;*/
+/*	width: 100%;*/
+/*	height: 100px;*/
+/*	padding: 20px 10px;*/
+/*	text-align: center;*/
+/*	margin: 0 auto;*/
+/*	left: 0;*/
+/*	right: 0;*/
+
+/*}*/
+/*.congrats button{*/
+/*	margin-left:50%;*/
+/*}*/
+h1 {
+	transform-origin: 50% 50%;
+	font-size: 30px;
+	font-family: 'Sigmar One', cursive;
+	cursor: pointer;
+	z-index: 2;
+	position: relative;
+	top: 0;
+	text-align: center;
+	width: 100%;
+}
+
+.blob {
+	height: 50px;
+	width: 50px;
+	color: #ffcc00;
+	position: absolute;
+	top: 45%;
+	left: 45%;
+	z-index: 1;
+	font-size: 30px;
+	display: none;	
+}
+.mdl-grid.update-btn-container{
+	padding-left:15%;
+}

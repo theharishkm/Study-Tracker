@@ -1,9 +1,13 @@
+= stylesheet_link_tag "congrats"
+= javascript_include_tag "congrats"
+// = javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"
+%script{:type => "module", :src => "https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"}
 %main.mdl-layout__content.mdl-color--grey-100
   .center
     .heading General Instructions:
-    %img{:src => "/assets/arrow.jpg", width: '30', height: '30'} To create a new Study Plan, go to Setup
-    %img{:src => "/assets/arrow.jpg", width: '30', height: '30'} To Update or Edit a Study Plan, click on Update
     
+    %i{:class =>"far fa-lightbulb" } -To create a new Study Plan, go to Setup
+    %i{:class =>"far fa-lightbulb" } -To Update or Edit a Study Plan, click on Update
   .mdl-grid.demo-content
     -id = 0
     - @out_subjects.each do |subject|
@@ -60,8 +64,15 @@
                 /%ul.mdl-list{:id => 'right-list-'+subject_id}
                 %h5 Completed Schedules
                 -if subject["upcoming_schedules"].length == 0 and subject["schedules_missed"].length == 0
-                  %li.mdl-list__item
-                    %i CONGRATULATIONS !!! All caught up!
+                  // %li.mdl-list__item
+                  // %i CONGRATULATIONS !!! All caught up!
+                  // %li.mdl_list_item
+                  
+                  .congrats
+                    %h1 Congratulations!
+                    // %button.btn-subject.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-cell.mdl-cell--5-col.mdl-button--colored{:type => "button"} Completed!
+
+                  
                 -else 
                   -i=0
                   -schedules = subject["upcoming_schedules"]
@@ -79,6 +90,7 @@
                   
             .mdl-grid.update-btn-container
               .mdl-cell.mdl-cell--4-col
-                %button.btn-update.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-cell--10-col.mdl-button--colored{:id=>"update" + subject_id, :type => "button"} Update
+                %button.btn-update.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-cell--10-col.mdl-button--colored{:id=>"update"+ subject_id, :type => "button"} Update
+                // 
           .card_face.back{:id => 'back-'+subject_id}
             =render partial: "dashboard/partials/back_card", locals: {schedules: subject["schedules"], name: subject['name'], subject_id: subject_id}

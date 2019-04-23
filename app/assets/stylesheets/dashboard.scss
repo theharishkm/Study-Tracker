@@ -220,6 +220,9 @@ svg[id^=right-graph]{
   position: absolute;
   height: 100%;
   width: 100%;
+  h1{
+    // color:white;
+  }
   backface-visibility: hidden;
 }
 
@@ -247,7 +250,7 @@ svg[id^=right-graph]{
 }
 
 .update-btn-container {
-  justify-content: center;
+  justify-content: left;
 }
 
 main.mdl-layout__content {

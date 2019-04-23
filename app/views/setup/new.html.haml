@@ -1,5 +1,7 @@
 = javascript_include_tag params[:controller]
 = stylesheet_link_tag params[:controller]
+= stylesheet_link_tag "https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+
 %header.mdl-layout__header
   %h4.setup-header Create New Study Plan
  
@@ -8,15 +10,15 @@
   %form{:action => setup_create_path, :method => :post, :novalidate => "", :id => 'setup_form'}
     .center
       .heading Instructions for filling out the form:
-      %img{:src => "/assets/arrow.jpg", width: '30', height: '30'} Under Subject Name/Project Title enter the Subject or Project Title
-      %img{:src => "/assets/arrow.jpg", width: '30', height: '30'} Under Hours Planned enter the Number of Hours you plan to study for the particular subject
-      %img{:src => "/assets/arrow.jpg", width: '30', height: '30'} Then enter the start date and end date for the particular plan.
-      %img{:src => "/assets/arrow.jpg", width: '30', height: '30'} Then click on Add Schedule to divide the divide the weekly plan into days
-      %img{:src => "/assets/arrow.jpg", width: '30', height: '30'} Then enter the day, date and start and end times of the Schedule
-      %img{:src => "/assets/arrow.jpg", width: '30', height: '30'} For more Schedules, click on Add Schedule
-      %img{:src => "/assets/arrow.jpg", width: '30', height: '30'} To Enter more plans, click on Add Subject. You can always add more Study Plans later as well.
-      %img{:src => "/assets/arrow.jpg", width: '30', height: '30'} To view the Plan in Home Page, click on the Arrow at bottom
-      
+      %i{:class =>"far fa-lightbulb" } -Under Subject Name/Project Title enter the Subject or Project Title
+      %i{:class =>"far fa-lightbulb" } -Under Hours Planned enter the Number of Hours you plan to study for the particular subject
+      %i{:class =>"far fa-lightbulb" } -Then enter the start date and end date for the particular plan.
+      %i{:class =>"far fa-lightbulb" } -Then click on Add Schedule to divide the divide the weekly plan into days
+      %i{:class =>"far fa-lightbulb" } -Then enter the day, date and start and end times of the Schedule
+      %i{:class =>"far fa-lightbulb" } -For more Schedules, click on Add Schedule
+      %i{:class =>"far fa-lightbulb" } -To Enter more plans, click on Add Subject. You can always add more Study Plans later as well.
+      %i{:class =>"far fa-lightbulb" } -To view the Plan in Home Page, click on the Arrow at bottom
+       
     .container
       %h5.username
         Name:
