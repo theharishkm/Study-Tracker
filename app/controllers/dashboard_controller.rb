@@ -1,7 +1,7 @@
 class DashboardController < ApplicationController
   
   skip_before_action :verify_authenticity_token
-  
+
   def index
     @current_user ||= User.find_by_id(session[:user_id])
     subjects = @current_user.subjects.all
@@ -30,6 +30,7 @@ class DashboardController < ApplicationController
         if !schedule.completed
           out_subject["upcoming_schedules"].push(schedule_nc)
         end
+
       end
       @out_subjects.push(out_subject)
     end
@@ -37,10 +38,12 @@ class DashboardController < ApplicationController
   
   def update
     schedules = params[:schedules]
+    flag = false
     schedules.each do |key, schedule|
       newSched = Schedule.find_by_id((schedule["id"]).to_i)
       newSched.completed = schedule["completed"] == "true"
       newSched.save!
+      redirect_to 'dashboard/index'
     end
   end
   
@@ -76,4 +79,7 @@ class DashboardController < ApplicationController
     return false
   end
   
+  def congrats
+
+  end
 end

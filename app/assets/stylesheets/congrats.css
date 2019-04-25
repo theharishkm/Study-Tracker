@@ -20,10 +20,10 @@ h1 {
 	font-size: 30px;
 	font-family: 'Sigmar One', cursive;
 	cursor: pointer;
-	z-index: 2;
+	z-index: 10;
 	position: relative;
 	top: 0;
-	text-align: center;
+	text-align: left;
 	width: 100%;
 }
 
@@ -34,7 +34,7 @@ h1 {
 	position: absolute;
 	top: 45%;
 	left: 45%;
-	z-index: 1;
+	z-index: 10;
 	font-size: 30px;
 	display: none;	
 }
