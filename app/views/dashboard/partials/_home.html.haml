@@ -70,8 +70,13 @@
                   
                   .congrats
                     %h1 Congratulations!
+<<<<<<< HEAD
                     // %button.btn-subject.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-cell.mdl-cell--5-col.mdl-button--colored{:type => "button"} Completed!
 
+=======
+                    %button.btn-subject.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-cell.mdl-cell--5-col.mdl-button--colored{:type => "button"} Completed!
+                  
+>>>>>>> fcdfd44dc1d883fc95cdb0313a8a3c1096471688
                   
                 -else 
                   -i=0
@@ -91,9 +96,13 @@
             .mdl-grid.update-btn-container
               .mdl-cell.mdl-cell--4-col
                 %button.btn-update.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-cell--10-col.mdl-button--colored{:id=>"update"+ subject_id, :type => "button"} Update
+<<<<<<< HEAD
               /.mdl-cell.mdl-cell--4-col
               /-if subject["upcoming_schedules"].length == 0 and subject["schedules_missed"].length == 0
               /%a.btn-delete.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-cell--10-col.mdl-button--colored{:href => "/setup/destroy"} Delete
           
+=======
+                // 
+>>>>>>> fcdfd44dc1d883fc95cdb0313a8a3c1096471688
           .card_face.back{:id => 'back-'+subject_id}
             =render partial: "dashboard/partials/back_card", locals: {schedules: subject["schedules"], name: subject['name'], subject_id: subject_id}

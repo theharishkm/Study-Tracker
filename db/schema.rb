@@ -15,15 +15,6 @@ ActiveRecord::Schema.define(version: 2019_04_04_004841) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "events", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
-    t.datetime "start_date"
-    t.datetime "end_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "schedules", force: :cascade do |t|
     t.time "start_time"
     t.time "end_time"
@@ -51,7 +42,6 @@ ActiveRecord::Schema.define(version: 2019_04_04_004841) do
     t.string "first_name"
     t.string "last_name"
     t.string "uid"
-    t.string "uin"
   end
 
 end
