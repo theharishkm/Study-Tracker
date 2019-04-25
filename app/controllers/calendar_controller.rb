@@ -1,7 +1,7 @@
 class CalendarController < ApplicationController
     
     def index
-        @current_user ||= User.find_by_id(session[:user_id])
+        @current_user = User.find_by_id(session[:user_id])
         @subjects = @current_user.subjects
         @schedules =Schedule.where(subject_id: @current_user.subjects.ids)
         @meetings = []

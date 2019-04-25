@@ -1,15 +1,15 @@
 -setup_prefill = defined?schedule
 .mdl-cell.mdl-cell--4-col
-    %label{:for => "day"} Select Day
-    %span{:style => "color: red"}*
-    %select#day.select-year.form-control.form-control-lg{:name=> "day_of_week"}
-        %option{:value => "mon", :selected => if setup_prefill then schedule.day_of_week == 1 else false end} Monday
-        %option{:value => "tue", :selected => if setup_prefill then schedule.day_of_week == 2 else false end} Tuesday
-        %option{:value => "wed", :selected => if setup_prefill then schedule.day_of_week == 3 else false end} Wednesday
-        %option{:value => "thu", :selected => if setup_prefill then schedule.day_of_week == 4 else false end} Thursday
-        %option{:value => "fri", :selected => if setup_prefill then schedule.day_of_week == 5 else false end} Friday
-        %option{:value => "sat", :selected => if setup_prefill then schedule.day_of_week == 6 else false end} Saturday
-        %option{:value => "sun", :selected => if setup_prefill then schedule.day_of_week == 7 else false end} Sunday
+    /%label{:for => "day"} Select Day
+    /%span{:style => "color: red"}*
+    /%select#day.select-year.form-control.form-control-lg{:name=> "day_of_week"}
+    /    %option{:value => "mon", :selected => if setup_prefill then schedule.day_of_week == 1 else false end} Monday
+    /    %option{:value => "tue", :selected => if setup_prefill then schedule.day_of_week == 2 else false end} Tuesday
+    /    %option{:value => "wed", :selected => if setup_prefill then schedule.day_of_week == 3 else false end} Wednesday
+    /    %option{:value => "thu", :selected => if setup_prefill then schedule.day_of_week == 4 else false end} Thursday
+    /    %option{:value => "fri", :selected => if setup_prefill then schedule.day_of_week == 5 else false end} Friday
+    /    %option{:value => "sat", :selected => if setup_prefill then schedule.day_of_week == 6 else false end} Saturday
+    /    %option{:value => "sun", :selected => if setup_prefill then schedule.day_of_week == 7 else false end} Sunday
     
     %label{:for => "dates"} Enter Date
     %span{:style => "color: red"}*

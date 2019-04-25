@@ -7,6 +7,6 @@
         %div.date-id= date.day
         - @meetings.each do |meeting|
             %div.details
-                -if date.strftime('%A') == meeting.start_time.strftime('%A') and date == meeting.dates
+                -if date == meeting.dates
                     = meeting.name
                     = meeting.start_time.strftime("%I:%M%p") + " to " +  meeting.end_time.strftime("%I:%M%p")

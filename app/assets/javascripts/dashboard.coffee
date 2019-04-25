@@ -9,6 +9,11 @@ reflipcard = ->
     $('#card-'+current_id).removeClass('is-flipped')
     return
     
+destroy = ->
+    current_id = parseInt($(this).prop('id').match(/\d+/g), 10)
+    $('#card-'+current_id).delete()
+    return
+    
 changelabel = ->
     current_id = $(this).prop('id').match(/\d+-\d+/g)[0]
     if $('#switch-label-text-' + current_id).html() == "Not Completed"
@@ -52,7 +57,7 @@ doUpdate = ->
         setWeeklyCompletion()
         $('#card-'+(current_id+1)).removeClass('is-flipped')
     return
-    
+   
 setWeeklyCompletion = ->
     i = 0
     while i < subjects.length
@@ -86,6 +91,9 @@ $(document).ready ->
    return
  $ ->
    $('button[id^=do-update').on 'click', doUpdate
+   return
+ $ ->
+   $('button[id^=delete').on 'click', destroy
    return
  return
 return

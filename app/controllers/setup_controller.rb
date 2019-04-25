@@ -88,4 +88,25 @@ class SetupController < ApplicationController
     
   end
   
+  def destroy
+    #sql = "select * from subjects where user_id=" + @current_user.id.to_s
+    #subjects = ActiveRecord::Base.connection.execute(sql)
+    @current_user = User.find_by_id(session[:user_id])
+    subjects = @current_user.subjects.all
+    #completed_subjects = []
+    subjects.each do |subject|
+      schedules = subject.schedules
+      i=0
+      schedules.each do |schedule|
+        break if schedule.completed == false
+        i+=1
+      end
+      if i == schedules.length
+        subject.destroy
+      end
+    end
+    redirect_to root_url
+  end
+
+  
 end

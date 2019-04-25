@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
-  resources :events
+  resources :sessions do
+    resources :subjects
+  end
   get 'setup/index'
   get 'setup/edit'
   get 'setup/new'
+  get 'setup/destroy'
   root 'dashboard#index'
   get 'calendar/index', to: 'calendar#index'
   get 'dashboard/index'

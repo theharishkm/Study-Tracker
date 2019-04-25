@@ -2,29 +2,39 @@
 %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"}
 %link{:href => "https://fonts.googleapis.com/icon?family=Material+Icons", :rel => "stylesheet"}/
 %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"}
+%link{:rel=> "stylesheet",:href=> "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css",:integrity=> "sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm",:crossorigin=> "anonymous"}
+%link{:href=> "https://fonts.googleapis.com/css?family=ZCOOL+XiaoWei",:rel=> "stylesheet"}
+
 = javascript_include_tag params[:controller]
 = stylesheet_link_tag params[:controller]
+= stylesheet_link_tag "pstyle"
+= stylesheet_link_tag "https://use.fontawesome.com/releases/v5.8.1/css/all.css"
 
 -#  This file is app/views/movies/index.html.haml
 %header
-    %nav.row 
-        %div.nav-wrapper
-            .col.s5.center-align 
-                %span.brand-logo StudyTracker
+    // %nav.row 
+    //     %div.nav-wrapper
+    //         .col.s5.center-align 
+    //             %span.brand-logo 
+
 
 %main.gray.lighten-4
     .notice
         -# if flash[:warning]
         =flash[:warning]
+        #container
+            .col-md-6
+                .thumbnail
+                    .caption-full
+                        %h2 Study Tracker
+                    %img{:src => "assets/study-space.jpg", :class => "img-responsive img-thumbnail"} 
+                    .caption-full
+                        %h4
+                        
+                            %img{:src => "assets/tamu_logo_sm.png"}
+                            %a.login-link{:href => "/auth/google_oauth2", :style => "text-transform:none", :color => "#800000"}
+                                Login with your TAMU NetId
 
-    .vertical-center
-        .login-container.mdl-grid
-            .btn.white.darken-8.col-xs-10.s10.m4.login-button
-                %a.login-link{:href => "/auth/google_oauth2", :style => "text-transform:none"}
-                    .left
-                        %img{:src => "assets/tamu-logo.png", :width => "70px", :height => "40px"}/
-                    Login with TAMU Net ID
-    
     
     
 %footer.page-footer#site-footer
@@ -36,6 +46,14 @@
         %p.center    
             %span
                 /Academic Success Center
+#particles-js
+= javascript_include_tag "particles"
+= javascript_include_tag "app"
 
+// %script{:src => "particles.js",:type =>"text/javascript"}
+// %script{:src => "app.js",:type =>"text/javascript"}
+
+// <script type="text/javascript" src="particles.js"></script>
+// <script type="text/javascript" src="app.js"></script>
 
 // <a title="By Texas A&amp;M University [Public domain], via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Texas_A%26M_University_logo.svg"><img width="128" alt="Texas A&amp;M University logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Texas_A%26M_University_logo.svg/128px-Texas_A%26M_University_logo.svg.png"></a>

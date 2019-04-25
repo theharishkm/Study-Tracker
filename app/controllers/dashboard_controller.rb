@@ -3,7 +3,7 @@ class DashboardController < ApplicationController
   skip_before_action :verify_authenticity_token
   
   def index
-    @current_user ||= User.find_by_id(session[:user_id])
+    @current_user = User.find_by_id(session[:user_id])
     subjects = @current_user.subjects.all
     @out_subjects = []
     subjects.each do |subject|
@@ -17,11 +17,12 @@ class DashboardController < ApplicationController
       schedules.each do |schedule|
         schedule_nc = Hash.new
         schedule_nc['id'] = schedule.id
-        schedule_nc['day'] = day_to_string(schedule.day_of_week)
+        #schedule_nc['day'] = day_to_string(schedule.day_of_week)
         schedule_nc['completed'] = schedule.completed
         schedule_nc['start_time'] = schedule.start_time.time.strftime("%I:%M%p")
         schedule_nc['end_time'] = schedule.end_time.time.strftime("%I:%M%p")
         schedule_nc['dates'] = schedule.dates
+        schedule_nc['day'] = schedule_nc['dates'].strftime('%A')
         if DatePassed schedule_nc['dates'] and !schedule.completed
           out_subject["schedules_missed"].push(schedule_nc)
           next
@@ -42,8 +43,9 @@ class DashboardController < ApplicationController
       newSched.completed = schedule["completed"] == "true"
       newSched.save!
     end
+    redirect_to root_url
   end
-  
+=begin 
   def day_to_string(day_of_week)
     case day_of_week
       when 1 then day = "Monday"
@@ -68,7 +70,7 @@ class DashboardController < ApplicationController
     end
     return false
   end
-  
+=end  
   def DatePassed(day)
     if (day < Date.current)
       return true

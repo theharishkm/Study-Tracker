@@ -9,13 +9,16 @@ class SessionsController < ApplicationController
     if (user.email.match(/tamu.edu/))
       redirect_to root_path
     else
-      flash[:warning] = "Login with your TAMU Net ID Only. Log out from all Google Accounts and try again."
+      session.delete(:user_id)
+      flash[:warning] = "Login with your TAMU Net  ID Only. Log out from all GMAIL and try again."
       redirect_to signin_path
     end
   end
 
   def destroy
-    session[:user_id] = nil
+    session.delete(:user_id)
+    @current_user = nil
+    flash[:notice] = "To logout succesfully, log out from GMAIL as well"
     redirect_to root_path
   end
   

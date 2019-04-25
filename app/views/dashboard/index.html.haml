@@ -1,5 +1,8 @@
 = javascript_include_tag params[:controller]
 = stylesheet_link_tag params[:controller]
+= stylesheet_link_tag "https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+// %link href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" rel="stylesheet" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"
+
 %body
 = content_tag :div, id: 'trackers', data: {trackers: @out_subjects} do end
 
@@ -26,10 +29,9 @@
       %a.mdl-navigation__link{:href => "/setup/new"}
         %i.mdl-color-text--blue-grey-400.material-icons{:role => "presentation"}> settings
         Setup
-      -#%a.mdl-navigation__link{:href => "https://successcenter.tamu.edu/"}
-        -#%i.mdl-color-text--blue-grey-400.material-icons{:role => "presentation"}> info
-        -#About
-      
+      %a.mdl-navigation__link{:href => "/setup/destroy"}
+        %i.mdl-color-text--blue-grey-400.material-icons{:role => "presentation"}> delete
+        Delete Completed Study Plans
       %a.mdl-navigation__link{:href => logout_path}
         %i.mdl-color-text--blue-grey-400.material-icons{:role => "presentation"}> power_settings_new
         Logout  
