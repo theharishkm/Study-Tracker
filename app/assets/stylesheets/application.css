@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
-@import 'animate';
+@import 'animate.css';
 #centered{
     padding: 20px 0px;
 }
