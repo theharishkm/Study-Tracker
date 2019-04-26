@@ -88,7 +88,6 @@ class SetupController < ApplicationController
     
   end
   
-<<<<<<< HEAD
   def destroy
     #sql = "select * from subjects where user_id=" + @current_user.id.to_s
     #subjects = ActiveRecord::Base.connection.execute(sql)
@@ -110,6 +109,4 @@ class SetupController < ApplicationController
   end
 
   
-=======
->>>>>>> fcdfd44dc1d883fc95cdb0313a8a3c1096471688
 end

@@ -9,15 +9,15 @@ $(function() {
 	
 	animateBlobs();
 });
-
-$('.congrats').click(function() {
-	reset();
-	
-	animateText();
-	
-	animateBlobs();
+$(document).ready(function(){
+	$('.congrats').click(function() {
+		reset();
+		
+		animateText();
+		
+		animateBlobs();
+	});
 });
-
 function reset() {
 	$.each($('.blob'), function(i) {
 		TweenMax.set($(this), { x: 0, y: 0, opacity: 1 });

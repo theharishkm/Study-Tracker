@@ -39,12 +39,10 @@ class DashboardController < ApplicationController
   
   def update
     schedules = params[:schedules]
-    flag = false
     schedules.each do |key, schedule|
       newSched = Schedule.find_by_id((schedule["id"]).to_i)
       newSched.completed = schedule["completed"] == "true"
       newSched.save!
-      redirect_to 'dashboard/index'
     end
     redirect_to root_url
   end
