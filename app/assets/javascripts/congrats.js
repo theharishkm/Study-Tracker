@@ -9,6 +9,14 @@ $(function() {
 	
 	animateBlobs();
 });
+
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+
+
 $(document).ready(function(){
 	$('.congrats').click(function() {
 		reset();
@@ -17,7 +25,14 @@ $(document).ready(function(){
 		
 		animateBlobs();
 	});
+	$('.refresh').click(async function(){
+		await sleep(800)
+		location.reload();
+	})
 });
+
+
+
 function reset() {
 	$.each($('.blob'), function(i) {
 		TweenMax.set($(this), { x: 0, y: 0, opacity: 1 });
